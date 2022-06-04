@@ -22,9 +22,14 @@ public class Map
         
     }
     
-    public void setPlayerXY(int x, int y){
-        playerX = x;
-        playerY = y;
+    public void movePlayerXY(int x, int y){
+        boolean validMove = board[playerX][playerY].checkValidRooms(board[x][y]);
+        if (validMove){
+            playerX = x;
+            playerY = y;
+        }else{
+            System.out.println("Sorry, not a valid move");   
+        }
     }
     
     public void setRoom(int x, int y, Room value){

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 /**
  * Write a description of class Room here.
@@ -12,6 +13,7 @@ public class Room
     String name;
     Item itemInTheRoom;
     Room validRooms[] = new Room[amountOfValidRooms];
+    //ArrayList validRooms = new ArrayList();
     /**
      * Constructor for objects of class Room
      */
@@ -33,13 +35,22 @@ public class Room
         validRooms[room] = valid;
     }
     
+    public boolean checkValidRooms(Room playerRoom){
+        for (int x=0;x<amountOfValidRooms;x++){ 
+            if (validRooms[x].name.equals(playerRoom.name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
      public void showValues(){
         System.out.println(name);
         System.out.println("Valid Rooms:");
         for (int x=0;x<amountOfValidRooms;x++){ 
-                if (validRooms[x] != null) {
-                    System.out.println("  "+validRooms[x].name);
-                }
+            if (validRooms[x] != null) {
+                System.out.println("  "+validRooms[x].name);
+            }
         }
     }
 }

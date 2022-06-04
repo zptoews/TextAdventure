@@ -73,37 +73,53 @@ public class TextAdventure
         room12.setItemInTheRoom(item);
 
         Map map = new Map();
-        map.setRoom(0, 0, room00);
-        map.setRoom(1, 0, room10); 
-        map.setRoom(0, 1, room01);
-        map.setRoom(1, 1, room11);
-        map.setRoom(0, 2, room02);
-        map.setRoom(1, 2, room12);
-        map.setPlayerXY(0, 0);
+        map.setRoom(0, 0, room00);//setting the rooms that exist
+        map.setRoom(1, 0, room10);//setting the rooms that exist
+        map.setRoom(0, 1, room01);//setting the rooms that exist
+        map.setRoom(1, 1, room11);//setting the rooms that exist
+        map.setRoom(0, 2, room02);//setting the rooms that exist
+        map.setRoom(1, 2, room12);//setting the rooms that exist
+        
         room00.setValidRooms(0, room01);
         room00.setValidRooms(1, room10);
+        
+        room10.setValidRooms(0, room00);
+        room10.setValidRooms(1, room11);
+        
+        room01.setValidRooms(0, room00);
+        room01.setValidRooms(1, room02);
+        
+        room02.setValidRooms(0, room01);
+        room02.setValidRooms(1, room12);
+        
+        room11.setValidRooms(0, room10);
+        room11.setValidRooms(1, room12);
+        
         map.showValues();
+        
         Scanner inputStream = new Scanner(System.in);
         String directionRight = "right";
         String directionLeft = "left";
         String directionUp = "up";
         String directionDown = "down";
-        int endX = 2;
-        int endY = 3;
+        
+        int endX = 1;
+        int endY = 2;
         boolean gameRuning = true;
+        
         while(gameRuning){
             String directionTyped = inputStream.next();
             if(directionTyped.equals(directionRight)){
-                map.setPlayerXY(map.playerX+1, map.playerY);
+                map.movePlayerXY(map.playerX+1, map.playerY);
             }    
             else if(directionTyped.equals(directionLeft)){
-                map.setPlayerXY(map.playerX-1, map.playerY);
+                map.movePlayerXY(map.playerX-1, map.playerY);
             }
             else if(directionTyped.equals(directionUp)){
-                map.setPlayerXY(map.playerX, map.playerY-1);
+                map.movePlayerXY(map.playerX, map.playerY-1);
             }
             else if(directionTyped.equals(directionDown)){
-                map.setPlayerXY(map.playerX, map.playerY+1);
+                map.movePlayerXY(map.playerX, map.playerY+1);
             }
             
             if(map.playerX == endX && map.playerY == endY){
