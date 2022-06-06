@@ -37,6 +37,10 @@ public class Map
         board[x][y] = value; 
     }
     
+    public void describingRoomWhereThePlayerIs(){
+        board[playerX][playerY].showValues();
+    }
+    
     public void showValues(){
         System.out.println("The player is located at:"+playerX+" "+playerY);        
         for (int x=0;x<amountOfRoomsX;x++){

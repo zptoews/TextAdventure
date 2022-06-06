@@ -110,31 +110,29 @@ public class TextAdventure
         boolean gameRunning = true;
         
         while(gameRunning){
-            String directionTyped = inputStream.next();
-            if(directionTyped.equals(directionRight)){
+            String command = inputStream.next();
+            if(command.equals(directionRight)){
                 map.movePlayerXY(map.playerX+1, map.playerY);
             }    
-            else if(directionTyped.equals(directionLeft)){
+            else if(command.equals(directionLeft)){
                 map.movePlayerXY(map.playerX-1, map.playerY);
             }
-            else if(directionTyped.equals(directionUp)){
+            else if(command.equals(directionUp)){
                 map.movePlayerXY(map.playerX, map.playerY-1);
             }
-            else if(directionTyped.equals(directionDown)){
+            else if(command.equals(directionDown)){
                 map.movePlayerXY(map.playerX, map.playerY+1);
+            }
+            else if(command.equals(look)){
+                System.out.println("looks");
+                map.describingRoomWhereThePlayerIs();
             }
             
             if(map.playerX == endX && map.playerY == endY){
                 System.out.println("End");
                 gameRunning = false;
             }
-            map.showValues();
-        }
-        while(gameRunning){
-            String lookTyped = inputStream.next();
-            if(lookTyped.equals(look)){
-                System.out.println("looks");
-            }
+            //map.showValues();
         }
     }
 }
