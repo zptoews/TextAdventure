@@ -23,7 +23,8 @@ public class Map
     }
     
     public void movePlayerXY(int x, int y){
-        boolean validMove = board[playerX][playerY].checkValidRooms(board[x][y]);
+        boolean playerInMap = x >= 0 && x < amountOfRoomsX && y >= 0 && y < amountOfRoomsY;
+        boolean validMove = playerInMap && board[playerX][playerY].checkValidRooms(board[x][y]);
         if (validMove){
             playerX = x;
             playerY = y;

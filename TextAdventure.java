@@ -103,11 +103,13 @@ public class TextAdventure
         String directionUp = "up";
         String directionDown = "down";
         
+        String look = "look";
+        
         int endX = 1;
         int endY = 2;
-        boolean gameRuning = true;
+        boolean gameRunning = true;
         
-        while(gameRuning){
+        while(gameRunning){
             String directionTyped = inputStream.next();
             if(directionTyped.equals(directionRight)){
                 map.movePlayerXY(map.playerX+1, map.playerY);
@@ -124,9 +126,15 @@ public class TextAdventure
             
             if(map.playerX == endX && map.playerY == endY){
                 System.out.println("End");
-                gameRuning = false;
+                gameRunning = false;
             }
             map.showValues();
+        }
+        while(gameRunning){
+            String lookTyped = inputStream.next();
+            if(lookTyped.equals(look)){
+                System.out.println("looks");
+            }
         }
     }
 }
