@@ -8,18 +8,18 @@
 public class Item
 {
     // instance variables - replace the example below with your own
-    String name;
+    String name;//item name
     /**
      * Constructor for objects of class Items
      */
     public Item()
     {
         // initialise instance variables
-        name = "";
+        name = "";//item name
     }
     
     public void setName(String value){
-        name = value;
+        name = value;//names value
     }
     
     public void showValues(){

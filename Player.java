@@ -20,15 +20,15 @@ public class Player
         name = "";
     }
     
-    public void setName(String value){
+    public void setName(String value){//setting player name
         name = value;
     }
     
-    public void setPlayerInTheRoom(Room value){
+    public void setPlayerInTheRoom(Room value){//player in room
         playerInTheRoom = value;
     }
     
-    public void setItemInThePlayer(Item value){
+    public void setItemInThePlayer(Item value){//giving player item
         itemInThePlayer = value;
     }
     
