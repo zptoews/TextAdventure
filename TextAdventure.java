@@ -42,6 +42,11 @@ public class TextAdventure
     }
 
     void testing(){
+        Player player = new Player();
+        player.setName("The player");
+        System.out.println("");
+        player.showValues();
+        
         Item hat = new Item();//Creating items
         hat.setName("hat");//Creating items
         System.out.println("");//Creating items
@@ -51,7 +56,7 @@ public class TextAdventure
         apple.setName("apple");//Creating items
         System.out.println("");//Creating items
         apple.showValues();//Creating items
-
+        
         Item kiwi = new Item();//Creating items
         kiwi.setName("kiwi");//Creating items
         System.out.println("");//Creating items
@@ -140,29 +145,18 @@ public class TextAdventure
             else if(command.equals(directionDown)){//Moving the player down if the player types down
                 map.movePlayerXY(map.playerX, map.playerY+1);
             }
-            else if(command.equals(look)){// The command for looking what room you are in
-                System.out.println("looks");
+            else if(command.equals(look)){// The command for looking what room you are i
                 map.describingRoomWhereThePlayerIs();
             }
             else if(command.equals(pickup)){// The command for looking what room you are in
                 System.out.println("You picked up:");
-                System.out.println("  ");
+                System.out.println("");
             }
             else if(command.equals(inventory)){// The command for looking what room you are in
-                System.out.println("In your inventory is:");
-                System.out.println("  ");
+                player.showValues();
             }
             else if(command.equals(place)){// The command for looking what room you are in
                 System.out.println("which item");
-            }
-            else if(command.equals(placeItem1)){// The command for looking what room you are in
-                System.out.println("Item1 is placed");
-            }
-            else if(command.equals(placeItem2)){// The command for looking what room you are in
-                System.out.println("Item2 is placed");
-            }
-            else if(command.equals(placeItem3)){// The command for looking what room you are in
-                System.out.println("Item3 is placed");
             }
             
             if(map.playerX == endX && map.playerY == endY){//Ends the game if the palyer gets to the end room

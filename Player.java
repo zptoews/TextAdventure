@@ -33,6 +33,9 @@ public class Player
     }
     
     public void showValues(){
-        System.out.println(name);
+        System.out.println("Player name: "+name);
+        if(itemInThePlayer !=  null){
+            System.out.println("  Item name: "+itemInThePlayer.name);
+        }
     }
 }
