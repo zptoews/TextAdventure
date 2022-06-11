@@ -22,19 +22,19 @@ public class Room
         // initialise instance variables
         name = "";
     }
-     
+
     public void setName(String value){
         name = value;
     }
-    
-    public void setItemInTheRoom(Item value){//item in teh room function
+
+    public void setItemInTheRoom(Item value){//item in the room function
         itemInTheRoom = value;
     }
-    
+
     public void setValidRooms(int room, Room valid){//if the room is valid
         validRooms[room] = valid;
     }
-    
+
     public boolean checkValidRooms(Room playerRoom){//checking the valid rooms
         for (int x=0;x<amountOfValidRooms;x++){ 
             if (validRooms[x].name.equals(playerRoom.name)) {
@@ -43,13 +43,18 @@ public class Room
         }
         return false;
     }
-    
-     public void showValues(){
-        System.out.println(name);
-        System.out.println("Valid Rooms:");//The text for the words "Valid rooms"
+
+    public void showValues(){
+        System.out.println("Room name: "+name);
+
+        if(itemInTheRoom !=  null){
+            System.out.println("  Item name: "+itemInTheRoom.name);
+        }
+
+        System.out.println("  Valid Rooms: ");//The text for the words "Valid rooms"
         for (int x=0;x<amountOfValidRooms;x++){ //prints valid rooms
             if (validRooms[x] != null) {
-                System.out.println("  "+validRooms[x].name);//prints the actual valid rooms
+                System.out.println("    "+validRooms[x].name);//prints the actual valid rooms
             }
         }
     }

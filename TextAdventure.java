@@ -42,35 +42,45 @@ public class TextAdventure
     }
 
     void testing(){
-        Item item = new Item();//Creating items
-        item.setName("item_name");//Creating items
+        Item hat = new Item();//Creating items
+        hat.setName("hat");//Creating items
         System.out.println("");//Creating items
-        item.showValues();//Creating items
+        hat.showValues();//Creating items
+        
+        Item apple = new Item();//Creating items
+        apple.setName("apple");//Creating items
+        System.out.println("");//Creating items
+        apple.showValues();//Creating items
 
+        Item kiwi = new Item();//Creating items
+        kiwi.setName("kiwi");//Creating items
+        System.out.println("");//Creating items
+        kiwi.showValues();//Creating items
+        
         Room room00 = new Room();//Putting the items in the room
         room00.setName("room00");//Putting the items in the room
-        room00.setItemInTheRoom(item);//Putting the items in the room
+        room00.setItemInTheRoom(hat);//Putting the items in the room
         //System.out.println("");
         //room.showValues();
         Room room10 = new Room();//Making new room
         room10.setName("room10");//Naming the room
-        room10.setItemInTheRoom(item);//Putting the items in the room
+        room10.setItemInTheRoom(apple);//Putting the items in the room
 
         Room room01 = new Room();//Making new room
         room01.setName("room01");//Naming the room
-        room01.setItemInTheRoom(item);//Putting the items in the room
+        room01.setItemInTheRoom(kiwi);//Putting the items in the room
 
         Room room11 = new Room();//Making new room
         room11.setName("room11");//Naming the room
-        room11.setItemInTheRoom(item);//Putting the items in the room
+        
 
         Room room02 = new Room();//Making new room
         room02.setName("room02");//Naming the room
-        room02.setItemInTheRoom(item);//Putting the items in the room
+       
 
         Room room12 = new Room();//Making new room
         room12.setName("room12");//Naming the room
-        room12.setItemInTheRoom(item);//Putting the items in the room
+        
 
         Map map = new Map();
         map.setRoom(0, 0, room00);//setting the rooms that exist
@@ -105,6 +115,13 @@ public class TextAdventure
         
         String look = "look";
         
+        String pickup = "pickup";
+        String inventory = "inventory";
+        String place = "place";
+        String placeItem1 = "hat";
+        String placeItem2 = "apple";
+        String placeItem3 = "kiwi";
+        
         int endX = 1;
         int endY = 2;
         boolean gameRunning = true;// The boolean for if the game is running
@@ -126,6 +143,26 @@ public class TextAdventure
             else if(command.equals(look)){// The command for looking what room you are in
                 System.out.println("looks");
                 map.describingRoomWhereThePlayerIs();
+            }
+            else if(command.equals(pickup)){// The command for looking what room you are in
+                System.out.println("You picked up:");
+                System.out.println("  ");
+            }
+            else if(command.equals(inventory)){// The command for looking what room you are in
+                System.out.println("In your inventory is:");
+                System.out.println("  ");
+            }
+            else if(command.equals(place)){// The command for looking what room you are in
+                System.out.println("which item");
+            }
+            else if(command.equals(placeItem1)){// The command for looking what room you are in
+                System.out.println("Item1 is placed");
+            }
+            else if(command.equals(placeItem2)){// The command for looking what room you are in
+                System.out.println("Item2 is placed");
+            }
+            else if(command.equals(placeItem3)){// The command for looking what room you are in
+                System.out.println("Item3 is placed");
             }
             
             if(map.playerX == endX && map.playerY == endY){//Ends the game if the palyer gets to the end room

@@ -25,5 +25,4 @@ public class Item
     public void showValues(){
         System.out.println(name);
     }
-    }
-
+}
