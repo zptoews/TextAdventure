@@ -95,6 +95,8 @@ public class TextAdventure
         map.setRoom(0, 2, room02);//setting the rooms that exist
         map.setRoom(1, 2, room12);//setting the rooms that exist
         
+        map.setPlayerInTheMap(player);
+        
         room00.setValidRooms(0, room01);//Setting the valid rooms for each room
         room00.setValidRooms(1, room10);//Setting the valid rooms for each room
         
@@ -149,8 +151,7 @@ public class TextAdventure
                 map.describingRoomWhereThePlayerIs();
             }
             else if(command.equals(pickup)){// The command for looking what room you are in
-                System.out.println("You picked up:");
-                System.out.println("");
+                map.pickingUpItem();
             }
             else if(command.equals(inventory)){// The command for looking what room you are in
                 player.showValues();
