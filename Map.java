@@ -1,7 +1,7 @@
 
 /**
  * Write a description of class Map here.
- *
+ * 
  * @author Zachary Toews
  * @version 21/04/22
  */
@@ -63,7 +63,17 @@ public class Map
         }     
     }
 
-
+    public void placingItem(){
+        if(playerInTheMap.itemInThePlayer == null){
+            System.out.println("Sorry, you don't have a item");
+        }else if(getCurrentRoomPlayerIsIn().itemInTheRoom != null){
+            System.out.println("Sorry, there is already a "+getCurrentRoomPlayerIsIn().itemInTheRoom.name+" in the room");
+        }else{
+            System.out.println("You placed a "+playerInTheMap.itemInThePlayer.name);         
+            getCurrentRoomPlayerIsIn().itemInTheRoom = playerInTheMap.itemInThePlayer;
+            playerInTheMap.itemInThePlayer = null;
+        }
+    }
     public void showValues(){
         System.out.println("The player is located at:"+playerX+" "+playerY); //printing where the       
         for (int x=0;x<amountOfRoomsX;x++){

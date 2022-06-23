@@ -17,7 +17,9 @@ public class Item
         // initialise instance variables
         name = "";//item name
     }
-    
+    public Item(String value){
+        name = value;//names value
+    }
     public void setName(String value){
         name = value;//names value
     }

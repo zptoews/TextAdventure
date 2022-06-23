@@ -62,6 +62,9 @@ public class TextAdventure
         System.out.println("");//Creating items
         kiwi.showValues();//Creating items
         
+        Item key = new Item("key");
+        key.showValues();
+        
         Room room00 = new Room();//Putting the items in the room
         room00.setName("room00");//Putting the items in the room
         room00.setItemInTheRoom(hat);//Putting the items in the room
@@ -115,26 +118,26 @@ public class TextAdventure
         map.showValues();//Showing values for just the first room once
         
         Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
-        String directionRight = "right";
-        String directionLeft = "left";
-        String directionUp = "up";
-        String directionDown = "down";
+        String directionRight = "right";//String for decting if the player types right
+        String directionLeft = "left";//String for decting if the player types left
+        String directionUp = "up";//String for decting if the player types up
+        String directionDown = "down";//String for decting if the player types down
         
-        String look = "look";
+        String look = "look";//String for the look command
         
-        String pickup = "pickup";
-        String inventory = "inventory";
-        String place = "place";
-        String placeItem1 = "hat";
-        String placeItem2 = "apple";
-        String placeItem3 = "kiwi";
+        String pickup = "pickup";//To detect if the player types pickup
+        String inventory = "inventory";//To detect if the player types inventory
+        String place = "place";// detects if the player types place
+        String placeItem1 = "hat";//Item 1 is a hat
+        String placeItem2 = "apple";// Item 2 is a apple
+        String placeItem3 = "kiwi";//Item 3 is a kiwi
         
-        int endX = 1;
-        int endY = 2;
+        int endX = 1;//The X location for the end
+        int endY = 2;//The Y location for the end
         boolean gameRunning = true;// The boolean for if the game is running
         
         while(gameRunning){//while loop
-            String command = inputStream.next();// String to take in words
+            String command = inputStream.next().toLowerCase();// String to take in words
             if(command.equals(directionRight)){//Moving the player right if the player types right
                 map.movePlayerXY(map.playerX+1, map.playerY);
             }    
@@ -157,12 +160,12 @@ public class TextAdventure
                 player.showValues();
             }
             else if(command.equals(place)){// The command for looking what room you are in
-                System.out.println("which item");
+                map.placingItem();
             }
             
             if(map.playerX == endX && map.playerY == endY){//Ends the game if the palyer gets to the end room
-                System.out.println("End");
-                gameRunning = false;
+                System.out.println("End");//Print the word "End"
+                gameRunning = false;//Stops the game
             }
             //map.showValues();
         }
