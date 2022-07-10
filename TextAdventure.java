@@ -67,16 +67,17 @@ public class TextAdventure
         
         Room room00 = new Room();//Putting the items in the room
         room00.setName("room00");//Putting the items in the room
-        room00.setItemInTheRoom(hat);//Putting the items in the room
+        room00.setItemsInTheRoom(0, hat);//Putting the items in the room
+        room00.setItemsInTheRoom(1, kiwi);
         //System.out.println("");
         //room.showValues();
         Room room10 = new Room();//Making new room
         room10.setName("room10");//Naming the room
-        room10.setItemInTheRoom(apple);//Putting the items in the room
+        room10.setItemsInTheRoom(0, apple);//Putting the items in the room
 
         Room room01 = new Room();//Making new room
         room01.setName("room01");//Naming the room
-        room01.setItemInTheRoom(kiwi);//Putting the items in the room
+        room01.setItemsInTheRoom(0, kiwi);//Putting the items in the room
 
         Room room11 = new Room();//Making new room
         room11.setName("room11");//Naming the room
@@ -161,6 +162,9 @@ public class TextAdventure
             }
             else if(command.equals(place)){// The command for looking what room you are in
                 map.placingItem();
+            }
+            else{
+                System.out.println("Sorry what you typed is invalid");
             }
             
             if(map.playerX == endX && map.playerY == endY){//Ends the game if the palyer gets to the end room

@@ -52,28 +52,29 @@ public class Map
     }
      
     public void pickingUpItem(){
-        if(getCurrentRoomPlayerIsIn().itemInTheRoom == null){
+        if(!getCurrentRoomPlayerIsIn().checkIfItemsAreInRoom()){
             System.out.println("Sorry, there is no item in this room");       
         }else if(playerInTheMap.itemInThePlayer != null){
             System.out.println("Sorry, you already have a item");
         }else{
-            playerInTheMap.setItemInThePlayer(getCurrentRoomPlayerIsIn().itemInTheRoom);
-            getCurrentRoomPlayerIsIn().itemInTheRoom = null;
-            System.out.println("You picked up a "+playerInTheMap.itemInThePlayer.name);
+            //playerInTheMap.setItemInThePlayer(getCurrentRoomPlayerIsIn().itemInTheRoom);
+            //getCurrentRoomPlayerIsIn().itemInTheRoom = null;
+            //System.out.println("You picked up a "+playerInTheMap.itemInThePlayer.name);
         }     
     }
 
     public void placingItem(){
         if(playerInTheMap.itemInThePlayer == null){
             System.out.println("Sorry, you don't have a item");
-        }else if(getCurrentRoomPlayerIsIn().itemInTheRoom != null){
-            System.out.println("Sorry, there is already a "+getCurrentRoomPlayerIsIn().itemInTheRoom.name+" in the room");
-        }else{
-            System.out.println("You placed a "+playerInTheMap.itemInThePlayer.name);         
-            getCurrentRoomPlayerIsIn().itemInTheRoom = playerInTheMap.itemInThePlayer;
-            playerInTheMap.itemInThePlayer = null;
-        }
+        }//else if(getCurrentRoomPlayerIsIn().itemInTheRoom != null){
+            //System.out.println("Sorry, there is already a "+getCurrentRoomPlayerIsIn().itemInTheRoom.name+" in the room");
+        //}else{
+          //  System.out.println("You placed a "+playerInTheMap.itemInThePlayer.name);         
+          //  getCurrentRoomPlayerIsIn().itemInTheRoom = playerInTheMap.itemInThePlayer;
+          //  playerInTheMap.itemInThePlayer = null;
+      //  }
     }
+    
     public void showValues(){
         System.out.println("The player is located at:"+playerX+" "+playerY); //printing where the       
         for (int x=0;x<amountOfRoomsX;x++){

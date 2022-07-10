@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Write a description of class Room here.
  *
@@ -9,11 +7,12 @@ import java.util.ArrayList;
 public class Room
 {
     // instance variables - replace the example below with your own
+    int amountOfItemsInTheRoom = 3;
     int amountOfValidRooms = 2; //ammount of valid rooms
     String name; //Variable for name
-    Item itemInTheRoom; //items in the rooms
+    Item itemsInTheRoom[] = new Item[amountOfItemsInTheRoom]; //items in the rooms
     Room validRooms[] = new Room[amountOfValidRooms]; // array form rooms
-    //ArrayList validRooms = new ArrayList();
+
     /**
      * Constructor for objects of class Room
      */
@@ -27,12 +26,21 @@ public class Room
         name = value;
     }
 
-    public void setItemInTheRoom(Item value){//item in the room function
-        itemInTheRoom = value;
+    public void setItemsInTheRoom(int x, Item value){//item in the room function
+        itemsInTheRoom[x] = value; 
     }
 
-    public void setValidRooms(int room, Room valid){//if the room is valid
-        validRooms[room] = valid;
+    public boolean checkIfItemsAreInRoom(){
+        for (int x=0;x<amountOfItemsInTheRoom;x++){ 
+            if (itemsInTheRoom[x] != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void setValidRooms(int x, Room valid){//if the room is valid
+        validRooms[x] = valid;
     }
 
     public boolean checkValidRooms(Room playerRoom){//checking the valid rooms
@@ -46,11 +54,14 @@ public class Room
 
     public void showValues(){
         System.out.println("Room name: "+name);
-
-        if(itemInTheRoom !=  null){
-            System.out.println("  Item name: "+itemInTheRoom.name);
+        
+        System.out.println("  Items: ");//The text for the words "Items"
+        for (int x=0;x<amountOfItemsInTheRoom;x++){ //prints item names
+            if (itemsInTheRoom[x] != null) {
+                System.out.println("    "+itemsInTheRoom[x].name);//prints the actual items in the room
+            }
         }
-
+        
         System.out.println("  Valid Rooms: ");//The text for the words "Valid rooms"
         for (int x=0;x<amountOfValidRooms;x++){ //prints valid rooms
             if (validRooms[x] != null) {
