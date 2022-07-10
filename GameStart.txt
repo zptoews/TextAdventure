@@ -5,3 +5,5 @@ Instructions: You can type up,down,north,south,east, and west to go different pl
 You can also type pickup_item_name to pickup a item and put it into your inventory
 
 Your goal is escape the island
+
+The controls are Up, Down, Left, Right, Look, Pickup, and  place 
