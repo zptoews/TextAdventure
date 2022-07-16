@@ -7,10 +7,11 @@
 public class Room
 {
     // instance variables - replace the example below with your own
-    int amountOfItemsInTheRoom = 3;
+    Item itemInTheRoom = null;
+    int amountOfItemsInTheRoomNeededToWin = 0;
     int amountOfValidRooms = 2; //ammount of valid rooms
-    String name; //Variable for name
-    Item itemsInTheRoom[] = new Item[amountOfItemsInTheRoom]; //items in the rooms
+    String name = "unNamed"; //Variable for name
+    Item itemsInTheRoomNeededToWin[] = null; //items in the rooms       
     Room validRooms[] = new Room[amountOfValidRooms]; // array form rooms
 
     /**
@@ -18,25 +19,38 @@ public class Room
      */
     public Room()
     {
-        // initialise instance variables
-        name = "";
+       
     }
 
+    public Room(int value){
+        amountOfItemsInTheRoomNeededToWin = value;
+        itemsInTheRoomNeededToWin = new Item[amountOfItemsInTheRoomNeededToWin]; //items in the rooms
+    }
+    
     public void setName(String value){
         name = value;
     }
 
-    public void setItemsInTheRoom(int x, Item value){//item in the room function
-        itemsInTheRoom[x] = value; 
+    public void setItemInTheRoom(Item value){//item in the room function
+        itemInTheRoom = value; 
     }
 
     public boolean checkIfItemsAreInRoom(){
-        for (int x=0;x<amountOfItemsInTheRoom;x++){ 
-            if (itemsInTheRoom[x] != null) {
+        for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
+            if (itemsInTheRoomNeededToWin[x] != null) {
                 return true;
             }
         }
         return false;
+    }
+    
+    public boolean checkAmountOfItemsAreInRoom(){
+        for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
+            if (itemsInTheRoomNeededToWin[x] == null) {
+                return false;
+            }
+        }
+        return true;        
     }
     
     public void setValidRooms(int x, Room valid){//if the room is valid
@@ -55,10 +69,10 @@ public class Room
     public void showValues(){
         System.out.println("Room name: "+name);
         
-        System.out.println("  Items: ");//The text for the words "Items"
-        for (int x=0;x<amountOfItemsInTheRoom;x++){ //prints item names
-            if (itemsInTheRoom[x] != null) {
-                System.out.println("    "+itemsInTheRoom[x].name);//prints the actual items in the room
+        System.out.println("  Items needed to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
+        for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ //prints item names
+            if (itemsInTheRoomNeededToWin[x] != null) {
+                System.out.println("    "+itemsInTheRoomNeededToWin[x].name);//prints the actual items in the room
             }
         }
         
