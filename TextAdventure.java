@@ -119,10 +119,12 @@ public class TextAdventure
         map.showValues();//Showing values for just the first room once
         
         Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
-        String directionRight = "right";//String for decting if the player types right
-        String directionLeft = "left";//String for decting if the player types left
-        String directionUp = "up";//String for decting if the player types up
-        String directionDown = "down";//String for decting if the player types down
+        String directionEast = "east";//String for decting if the player types right
+        String directionWest = "west";//String for decting if the player types left
+        String directionNorth = "north";//String for decting if the player types up
+        String directionSouth = "south";//String for decting if the player types down
+        String directionUp = "up";
+        String directionDown = "down";
         
         String look = "look";//String for the look command
         
@@ -133,25 +135,34 @@ public class TextAdventure
         String placeItem2 = "apple";// Item 2 is a apple
         String placeItem3 = "kiwi";//Item 3 is a kiwi
         
+        String playerName = "";
+        
         int endX = 1;//The X location for the end
         int endY = 2;//The Y location for the end
-        boolean gameRunning = true;// The boolean for if the game is running
         
+        boolean gameRunning = true;// The boolean for if the game is running
         while(gameRunning){//while loop
             String command = inputStream.next().toLowerCase();// String to take in words
-            if(command.equals(directionRight)){//Moving the player right if the player types right
+            String playerName = inputStream;
+            if(command.equals(directionEast)){//Moving the player right if the player types east
                 map.movePlayerXY(map.playerX+1, map.playerY);
             }    
-            else if(command.equals(directionLeft)){//Moving the player left if the player types left
+            else if(command.equals(directionWest)){//Moving the player left if the player types west
                 map.movePlayerXY(map.playerX-1, map.playerY);
+            }
+            else if(command.equals(directionNorth)){//Moving the player up if the player types north
+                map.movePlayerXY(map.playerX, map.playerY-1);
+            }
+            else if(command.equals(directionSouth)){//Moving the player down if the player types south
+                map.movePlayerXY(map.playerX, map.playerY+1);
             }
             else if(command.equals(directionUp)){//Moving the player up if the player types up
                 map.movePlayerXY(map.playerX, map.playerY-1);
             }
             else if(command.equals(directionDown)){//Moving the player down if the player types down
-                map.movePlayerXY(map.playerX, map.playerY+1);
+                map.movePlayerXY(map.playerX, map.playerY-1);
             }
-            else if(command.equals(look)){// The command for looking what room you are i
+            else if(command.equals(look)){// The command for looking what room you are in
                 map.describingRoomWhereThePlayerIs();
             }
             else if(command.equals(pickup)){// The command for looking what room you are in
