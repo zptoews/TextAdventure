@@ -42,8 +42,10 @@ public class TextAdventure
     }
 
     void testing(){
+        Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
         Player player = new Player();
-        player.setName("The player");
+        String playerName = inputStream.next();
+        player.setName(playerName);
         System.out.println("");
         player.showValues();
         
@@ -118,7 +120,6 @@ public class TextAdventure
         
         map.showValues();//Showing values for just the first room once
         
-        Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
         String directionEast = "east";//String for decting if the player types right
         String directionWest = "west";//String for decting if the player types left
         String directionNorth = "north";//String for decting if the player types up
@@ -135,15 +136,12 @@ public class TextAdventure
         String placeItem2 = "apple";// Item 2 is a apple
         String placeItem3 = "kiwi";//Item 3 is a kiwi
         
-        String playerName = "";
-        
         int endX = 1;//The X location for the end
         int endY = 2;//The Y location for the end
         
         boolean gameRunning = true;// The boolean for if the game is running
         while(gameRunning){//while loop
             String command = inputStream.next().toLowerCase();// String to take in words
-            String playerName = inputStream;
             if(command.equals(directionEast)){//Moving the player right if the player types east
                 map.movePlayerXY(map.playerX+1, map.playerY);
             }    

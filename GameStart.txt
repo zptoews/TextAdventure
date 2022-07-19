@@ -1,9 +1,7 @@
 Welcome to my text adventure game
 
-Instructions: You can type up,down,north,south,east, and west to go different places
-
-You can also type pickup_item_name to pickup a item and put it into your inventory
-
 Your goal is escape the island
 
-The controls are Up, Down, Left, Right, Look, Pickup, and  place 
+The controls are North, South, East, West, Look, Pickup, and Place
+
+Type your name
