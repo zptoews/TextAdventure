@@ -84,15 +84,12 @@ public class TextAdventure
         Room room11 = new Room();//Making new room
         room11.setName("room11");//Naming the room
         
-
         Room room02 = new Room();//Making new room
         room02.setName("room02");//Naming the room
        
-
         Room room12 = new Room(3);//Making new room
         room12.setName("room12");//Naming the room
         
-
         Map map = new Map();
         map.setRoom(0, 0, room00);//setting the rooms that exist
         map.setRoom(1, 0, room10);//setting the rooms that exist
@@ -136,9 +133,6 @@ public class TextAdventure
         String placeItem2 = "apple";// Item 2 is a apple
         String placeItem3 = "kiwi";//Item 3 is a kiwi
         
-        int endX = 1;//The X location for the end
-        int endY = 2;//The Y location for the end
-        
         boolean gameRunning = true;// The boolean for if the game is running
         while(gameRunning){//while loop
             String command = inputStream.next().toLowerCase();// String to take in words
@@ -176,8 +170,8 @@ public class TextAdventure
                 System.out.println("Sorry what you typed is invalid");
             }
             
-            if(map.playerX == endX && map.playerY == endY){//Ends the game if the palyer gets to the end room
-                System.out.println("End");//Print the word "End"
+            if(map.getCurrentRoomPlayerIsIn().checkIfPlayerWon()){//Ends the game if the palyer gets to the end room
+                System.out.println("The End");//Print the word "End"
                 gameRunning = false;//Stops the game
             }
             //map.showValues();

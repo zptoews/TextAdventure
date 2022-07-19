@@ -19,14 +19,14 @@ public class Room
      */
     public Room()
     {
-       
+
     }
 
     public Room(int value){
         amountOfItemsInTheRoomNeededToWin = value;
         itemsInTheRoomNeededToWin = new Item[amountOfItemsInTheRoomNeededToWin]; //items in the rooms
     }
-    
+
     public void setName(String value){
         name = value;
     }
@@ -43,16 +43,19 @@ public class Room
         }
         return false;
     }
-    
-    public boolean checkAmountOfItemsAreInRoom(){
-        for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
-            if (itemsInTheRoomNeededToWin[x] == null) {
-                return false;
+
+    public boolean checkIfPlayerWon(){
+        if (checkIfEndRoom()){
+            for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
+                if (itemsInTheRoomNeededToWin[x] == null) {
+                    return false;
+                }
             }
+            return true;   
         }
-        return true;        
+        return false;
     }
-    
+
     public void setValidRooms(int x, Room valid){//if the room is valid
         validRooms[x] = valid;
     }
@@ -66,16 +69,25 @@ public class Room
         return false;
     }
 
+    public boolean checkIfEndRoom(){
+        if(itemsInTheRoomNeededToWin != null){
+            return true;
+        }
+        return false;
+    }
+    
     public void showValues(){
         System.out.println("Room name: "+name);
-        
-        System.out.println("  Items needed to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
-        for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ //prints item names
-            if (itemsInTheRoomNeededToWin[x] != null) {
-                System.out.println("    "+itemsInTheRoomNeededToWin[x].name);//prints the actual items in the room
+
+        if(checkIfEndRoom()){
+            System.out.println("  Items needed to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
+            for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ //prints item names
+                if (itemsInTheRoomNeededToWin[x] != null) {
+                    System.out.println("    "+itemsInTheRoomNeededToWin[x].name);//prints the actual items in the room
+                }
             }
-        }
-        
+        } 
+
         System.out.println("  Valid Rooms: ");//The text for the words "Valid rooms"
         for (int x=0;x<amountOfValidRooms;x++){ //prints valid rooms
             if (validRooms[x] != null) {
