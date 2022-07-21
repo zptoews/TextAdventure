@@ -52,14 +52,14 @@ public class Map
     }
      
     public void pickingUpItem(){
-        if(!getCurrentRoomPlayerIsIn().checkIfItemsAreInRoom()){
+        if(getCurrentRoomPlayerIsIn().itemInTheRoom == null){
             System.out.println("Sorry, there is no item in this room");       
         }else if(playerInTheMap.itemInThePlayer != null){
             System.out.println("Sorry, you already have a item");
         }else{
-            //playerInTheMap.setItemInThePlayer(getCurrentRoomPlayerIsIn().itemInTheRoom);
-            //getCurrentRoomPlayerIsIn().itemInTheRoom = null;
-            //System.out.println("You picked up a "+playerInTheMap.itemInThePlayer.name);
+            playerInTheMap.setItemInThePlayer(getCurrentRoomPlayerIsIn().itemInTheRoom);
+            getCurrentRoomPlayerIsIn().itemInTheRoom = null;
+            System.out.println("You picked up a "+playerInTheMap.itemInThePlayer.name);
         }     
     }
 

@@ -35,7 +35,7 @@ public class Room
         itemInTheRoom = value; 
     }
 
-    public boolean checkIfItemsAreInRoom(){
+    public boolean checkIfItemsAreInRoomNeededToWin(){
         for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
             if (itemsInTheRoomNeededToWin[x] != null) {
                 return true;
@@ -75,9 +75,13 @@ public class Room
         }
         return false;
     }
-    
+
     public void showValues(){
         System.out.println("Room name: "+name);
+
+        if(itemInTheRoom != null){
+            System.out.println("  The item in the room is: " + itemInTheRoom.name);
+        }
 
         if(checkIfEndRoom()){
             System.out.println("  Items needed to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
