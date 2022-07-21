@@ -49,19 +49,13 @@ public class TextAdventure
         System.out.println("");
         player.showValues();
         
-        Item hat = new Item();//Creating items
-        hat.setName("hat");//Creating items
-        System.out.println("");//Creating items
+        Item hat = new Item("hat");//Creating items
         hat.showValues();//Creating items
         
-        Item apple = new Item();//Creating items
-        apple.setName("apple");//Creating items
-        System.out.println("");//Creating items
+        Item apple = new Item("apple");//Creating items
         apple.showValues();//Creating items
         
-        Item kiwi = new Item();//Creating items
-        kiwi.setName("kiwi");//Creating items
-        System.out.println("");//Creating items
+        Item kiwi = new Item("kiwi");//Creating items
         kiwi.showValues();//Creating items
         
         Item key = new Item("key");
@@ -70,7 +64,7 @@ public class TextAdventure
         Room room00 = new Room();//Putting the items in the room
         room00.setName("room00");//Putting the items in the room
         room00.setItemInTheRoom(hat);//Putting the items in the room
-        room00.setItemInTheRoom(kiwi);
+        
         //System.out.println("");
         //room.showValues();
         Room room10 = new Room();//Making new room
@@ -83,6 +77,7 @@ public class TextAdventure
 
         Room room11 = new Room();//Making new room
         room11.setName("room11");//Naming the room
+        room11.setItemInTheRoom(key);
         
         Room room02 = new Room();//Making new room
         room02.setName("room02");//Naming the room
@@ -114,6 +109,9 @@ public class TextAdventure
         
         room11.setValidRooms(0, room10);//Setting the valid rooms for each room
         room11.setValidRooms(1, room12);//Setting the valid rooms for each room
+        
+        room12.setValidRooms(0, room02);
+        room12.setValidRooms(1, room11);
         
         map.showValues();//Showing values for just the first room once
         

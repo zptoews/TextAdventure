@@ -84,7 +84,7 @@ public class Room
         }
 
         if(checkIfEndRoom()){
-            System.out.println("  Items needed to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
+            System.out.println("  Items needed to be in the room to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
             for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ //prints item names
                 if (itemsInTheRoomNeededToWin[x] != null) {
                     System.out.println("    "+itemsInTheRoomNeededToWin[x].name);//prints the actual items in the room
