@@ -7,23 +7,24 @@
 public class Room
 {
     // instance variables - replace the example below with your own
+    String name = "unNamed"; //Variable for name
     Item itemInTheRoom = null;
     int amountOfItemsInTheRoomNeededToWin = 0;
     int amountOfValidRooms = 2; //ammount of valid rooms
-    String name = "unNamed"; //Variable for name
     Item itemsInTheRoomNeededToWin[] = null; //items in the rooms       
     Room validRooms[] = new Room[amountOfValidRooms]; // array form rooms
 
     /**
      * Constructor for objects of class Room
      */
-    public Room()
+    public Room(String value)
     {
-
+        name = value;
     }
 
-    public Room(int value){
-        amountOfItemsInTheRoomNeededToWin = value;
+    public Room(String value, int itemsNeededToWin){
+        this(value);
+        amountOfItemsInTheRoomNeededToWin = itemsNeededToWin;
         itemsInTheRoomNeededToWin = new Item[amountOfItemsInTheRoomNeededToWin]; //items in the rooms
     }
 

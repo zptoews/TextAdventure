@@ -8,16 +8,16 @@
 public class Player
 {
     // instance variables - replace the example below with your own
-    String name;
+    String name = "unNamed";
     Item itemInThePlayer;
     Room playerInTheRoom;
     /**
      * Constructor for objects of class Player
      */
-    public Player()
+    public Player(String value)
     {
         // initialise instance variables
-        name = "";
+        name = value;
     }
     
     public void setName(String value){//setting player name

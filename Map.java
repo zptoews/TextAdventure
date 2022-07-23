@@ -10,10 +10,12 @@ public class Map
     // instance variables - replace the example below with your own
     int amountOfRoomsX = 2;//Ammount of rooms X
     int amountOfRoomsY = 3;//Ammount of rooms Y
+    int amountOfLevels = 2;
     Player playerInTheMap;
-    Room board[][] = new Room[amountOfRoomsX][amountOfRoomsY];//Board for the rooms
-    int playerX = 0;// The players's X
-    int playerY = 0;// The players's Y
+    Room board[][][] = new Room[amountOfRoomsX][amountOfRoomsY][amountOfLevels];//Board for the rooms
+    int playerX = 0;// The player's X
+    int playerY = 0;// The player's Y
+    int playerZ = 0;// The player's Z
     /**
      * Constructor for objects of class Map
      */
@@ -23,23 +25,24 @@ public class Map
 
     }
 
-    public void movePlayerXY(int x, int y){
-        boolean playerInBounds = x >= 0 && x < amountOfRoomsX && y >= 0 && y < amountOfRoomsY;//Checking if the move is valid
-        boolean validMove = playerInBounds && getCurrentRoomPlayerIsIn().checkValidRooms(board[x][y]);//Checking if the move is valid
+    public void movePlayerXYZ(int x, int y, int z){
+        boolean playerInBounds = x >= 0 && x < amountOfRoomsX && y >= 0 && y < amountOfRoomsY && z >= 0 && z < amountOfLevels;//Checking if the move is valid
+        boolean validMove = playerInBounds && getCurrentRoomPlayerIsIn().checkValidRooms(board[x][y][z]);//Checking if the move is valid
         if (validMove){
             playerX = x;//asigning playerX to x
             playerY = y;//asigning playerY to y
+            playerZ = z;
         }else{
             System.out.println("Sorry, not a valid move");// Telling the player it isnt a valid move
         }
     }
 
-    public void setRoom(int x, int y, Room value){
-        board[x][y] = value; 
+    public void setRoom(int x, int y, int z, Room value){
+        board[x][y][z] = value; 
     }
 
     public Room getCurrentRoomPlayerIsIn(){
-        return board[playerX][playerY];
+        return board[playerX][playerY][playerZ];
     }
 
     public void setPlayerInTheMap(Player value){//player in the map function
@@ -90,11 +93,12 @@ public class Map
     }
 
     public void showValues(){
-        System.out.println("The player is located at:"+playerX+" "+playerY); //printing where the       
+        System.out.println("The player is located at: "+playerX+","+playerY+","+playerZ); //printing where the       
         for (int x=0;x<amountOfRoomsX;x++){
             for (int y=0;y<amountOfRoomsY;y++){
-                if (board[x][y] != null) {
-                    board[x][y].showValues();
+                for(int z=0;z<amountOfLevels;z++)
+                if (board[x][y][z] != null) {
+                    board[x][y][z].showValues();
                     System.out.println("");
                 }
             }

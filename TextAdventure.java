@@ -43,9 +43,8 @@ public class TextAdventure
 
     void testing(){
         Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
-        Player player = new Player();
         String playerName = inputStream.next();
-        player.setName(playerName);
+        Player player = new Player(playerName);
         System.out.println("");
         player.showValues();
         
@@ -61,57 +60,87 @@ public class TextAdventure
         Item key = new Item("key");
         key.showValues();
         
-        Room room00 = new Room();//Putting the items in the room
-        room00.setName("room00");//Putting the items in the room
-        room00.setItemInTheRoom(hat);//Putting the items in the room
+        Room room000 = new Room("room 0,0,0");//Putting the items in the room
+        room000.setItemInTheRoom(hat);//Putting the items in the room
         
-        //System.out.println("");
-        //room.showValues();
-        Room room10 = new Room();//Making new room
-        room10.setName("room10");//Naming the room
-        room10.setItemInTheRoom(apple);//Putting the items in the room
+        Room room100 = new Room("room 1,0,0");//Making new room
+        room100.setItemInTheRoom(apple);//Putting the items in the room
 
-        Room room01 = new Room();//Making new room
-        room01.setName("room01");//Naming the room
-        room01.setItemInTheRoom(kiwi);//Putting the items in the room
+        Room room010 = new Room("room 0,1,0");//Making new room
 
-        Room room11 = new Room();//Making new room
-        room11.setName("room11");//Naming the room
-        room11.setItemInTheRoom(key);
+        Room room110 = new Room("room 1,1,0");//Making new room
         
-        Room room02 = new Room();//Making new room
-        room02.setName("room02");//Naming the room
+        Room room020 = new Room("room 0,2,0");//Making new room
        
-        Room room12 = new Room(3);//Making new room
-        room12.setName("room12");//Naming the room
+        Room room120 = new Room("end room 1,2,0", 3);//Making new end room
+        
+        Room room001 = new Room("room 0,0,1");//Putting the items in the room
+    
+        Room room101 = new Room("room 1,0,1");//Making new room
+
+        Room room011 = new Room("room 0,1,1");//Making new room
+    
+        Room room111 = new Room("room 1,1,1");//Making new room
+        
+        Room room021 = new Room("room 0,2,1");//Making new room
+        room021.setItemInTheRoom(key);
+        
+        Room room121 = new Room("room 1,2,1");//Making new room
+        room121.setItemInTheRoom(kiwi);//Putting the items in the room
         
         Map map = new Map();
-        map.setRoom(0, 0, room00);//setting the rooms that exist
-        map.setRoom(1, 0, room10);//setting the rooms that exist
-        map.setRoom(0, 1, room01);//setting the rooms that exist
-        map.setRoom(1, 1, room11);//setting the rooms that exist
-        map.setRoom(0, 2, room02);//setting the rooms that exist
-        map.setRoom(1, 2, room12);//setting the rooms that exist
+        map.setRoom(0, 0, 0, room000);//setting the rooms that exist
+        map.setRoom(1, 0, 0, room100);//setting the rooms that exist
+        map.setRoom(0, 1, 0, room010);//setting the rooms that exist
+        map.setRoom(1, 1, 0, room110);//setting the rooms that exist
+        map.setRoom(0, 2, 0, room020);//setting the rooms that exist
+        map.setRoom(1, 2, 0, room120);//setting the rooms that exist
+        
+        map.setRoom(0, 0, 1, room001);//setting the rooms that exist
+        map.setRoom(1, 0, 1, room101);//setting the rooms that exist
+        map.setRoom(0, 1, 1, room011);//setting the rooms that exist
+        map.setRoom(1, 1, 1, room111);//setting the rooms that exist
+        map.setRoom(0, 2, 1, room021);//setting the rooms that exist
+        map.setRoom(1, 2, 1, room121);//setting the rooms that exist
         
         map.setPlayerInTheMap(player);
         
-        room00.setValidRooms(0, room01);//Setting the valid rooms for each room
-        room00.setValidRooms(1, room10);//Setting the valid rooms for each room
+        room000.setValidRooms(0, room001);//Setting the valid rooms for each room
+        room000.setValidRooms(1, room100);//Setting the valid rooms for each room
         
-        room10.setValidRooms(0, room00);//Setting the valid rooms for each room
-        room10.setValidRooms(1, room11);//Setting the valid rooms for each room
+        room100.setValidRooms(0, room000);//Setting the valid rooms for each room
+        room100.setValidRooms(1, room110);//Setting the valid rooms for each room
         
-        room01.setValidRooms(0, room00);//Setting the valid rooms for each room
-        room01.setValidRooms(1, room02);//Setting the valid rooms for each room
+        room010.setValidRooms(0, room110);//Setting the valid rooms for each room
+        room010.setValidRooms(1, room020);//Setting the valid rooms for each room
         
-        room02.setValidRooms(0, room01);//Setting the valid rooms for each room
-        room02.setValidRooms(1, room12);//Setting the valid rooms for each room
+        room020.setValidRooms(0, room010);//Setting the valid rooms for each room
+        room020.setValidRooms(1, room120);//Setting the valid rooms for each room
         
-        room11.setValidRooms(0, room10);//Setting the valid rooms for each room
-        room11.setValidRooms(1, room12);//Setting the valid rooms for each room
+        room110.setValidRooms(0, room100);//Setting the valid rooms for each room
+        room110.setValidRooms(1, room010);//Setting the valid rooms for each room
         
-        room12.setValidRooms(0, room02);
-        room12.setValidRooms(1, room11);
+        room120.setValidRooms(0, room020);
+        room120.setValidRooms(1, room110);
+        
+        
+        room001.setValidRooms(0, room011);//Setting the valid rooms for each room
+        room001.setValidRooms(1, room101);//Setting the valid rooms for each room
+        
+        room101.setValidRooms(0, room001);//Setting the valid rooms for each room
+        room101.setValidRooms(1, room111);//Setting the valid rooms for each room
+    
+        room011.setValidRooms(0, room001);//Setting the valid rooms for each room
+        room011.setValidRooms(1, room021);//Setting the valid rooms for each room
+        
+        room021.setValidRooms(0, room011);//Setting the valid rooms for each room
+        room021.setValidRooms(1, room121);//Setting the valid rooms for each room
+        
+        room111.setValidRooms(0, room101);//Setting the valid rooms for each room
+        room111.setValidRooms(1, room121);//Setting the valid rooms for each room
+    
+        room121.setValidRooms(0, room111);
+        room121.setValidRooms(1, room120);
         
         map.showValues();//Showing values for just the first room once
         
@@ -135,22 +164,22 @@ public class TextAdventure
         while(gameRunning){//while loop
             String command = inputStream.next().toLowerCase();// String to take in words
             if(command.equals(directionEast)){//Moving the player right if the player types east
-                map.movePlayerXY(map.playerX+1, map.playerY);
+                map.movePlayerXYZ(map.playerX+1, map.playerY, map.playerZ);
             }    
             else if(command.equals(directionWest)){//Moving the player left if the player types west
-                map.movePlayerXY(map.playerX-1, map.playerY);
+                map.movePlayerXYZ(map.playerX-1, map.playerY, map.playerZ);
             }
             else if(command.equals(directionNorth)){//Moving the player up if the player types north
-                map.movePlayerXY(map.playerX, map.playerY-1);
+                map.movePlayerXYZ(map.playerX, map.playerY-1, map.playerZ);
             }
             else if(command.equals(directionSouth)){//Moving the player down if the player types south
-                map.movePlayerXY(map.playerX, map.playerY+1);
+                map.movePlayerXYZ(map.playerX, map.playerY+1, map.playerZ);
             }
             else if(command.equals(directionUp)){//Moving the player up if the player types up
-                map.movePlayerXY(map.playerX, map.playerY-1);
+                map.movePlayerXYZ(map.playerX, map.playerY, map.playerZ+1);
             }
             else if(command.equals(directionDown)){//Moving the player down if the player types down
-                map.movePlayerXY(map.playerX, map.playerY-1);
+                map.movePlayerXYZ(map.playerX, map.playerY, map.playerZ-1);
             }
             else if(command.equals(look)){// The command for looking what room you are in
                 map.describingRoomWhereThePlayerIs();
