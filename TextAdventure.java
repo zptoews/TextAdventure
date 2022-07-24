@@ -13,6 +13,9 @@ import java.util.Scanner;//all the imports
 public class TextAdventure
 {
     // instance variables - replace the example below with your own
+    public static final String NZ = "nz";
+    public static final String Canada = "canada";
+    
     public static final String directionEast = "east";//String for decting if the player types right
     public static final String directionWest = "west";//String for decting if the player types left
     public static final String directionNorth = "north";//String for decting if the player types up
@@ -34,16 +37,9 @@ public class TextAdventure
     {
         // initialise instance variables
         File myFile=new File("GameStart.txt");//For printing the inital text
-        //System.out.println("Welcome to my text adventure game");//inroduction for the game
-        //System.out.println("");//inroduction for the game
-        //System.out.println("Insturctions: You can type up,down,north,south,east, and west to go diffrent places");//inroduction for the game
-        //System.out.println("You can also type pickup_item_name to pickup a item and put it into your invintory");//inroduction for the game
-        //System.out.println("");//inroduction for the game
-        //System.out.println("Your goal is escape the island");//inroduction for the game
         try { //printing out the file
             Scanner readTheFile = new Scanner(myFile);
             while (readTheFile.hasNextLine()){
-                //String reading=readTheFile.nextLine();
                 System.out.println(readTheFile.nextLine());
             }
         }
@@ -52,56 +48,54 @@ public class TextAdventure
             System.out.println("Something went wrong 🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿?");//incase something goes wrong
         }//catch statment
 
-        testing();
+        adventureChoice();
     }
 
-    void testing(){
+    public void adventureChoice(){
         Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
+        
         String playerName = inputStream.next();
         Player player = new Player(playerName);
         System.out.println("");
         player.showValues();
-
+        
+        String adventureChoice = inputStream.next().toLowerCase();
+        Map map;
+        
+        switch (adventureChoice) {
+            case NZ:
+                map = getAdventureNzMap(); 
+                break;
+            default:
+                map = getAdventureNzMap();
+        }
+        startAdventure(map, player);
+    }
+    
+    public Map getAdventureNzMap(){
         Item hat = new Item("hat");//Creating items
-        hat.showValues();//Creating items
-
         Item apple = new Item("apple");//Creating items
-        apple.showValues();//Creating items
-
         Item kiwi = new Item("kiwi");//Creating items
-        kiwi.showValues();//Creating items
-
         Item key = new Item("key");
-        key.showValues();
 
-        Room room000 = new Room("Starting room", 0, 0, 0);//Putting the items in the room
-        room000.setItemInTheRoom(hat);//Putting the items in the room
-
+        Room room000 = new Room("Starting room", 0, 0, 0);//Putting the items in the room        
         Room room100 = new Room("Room", 1, 0, 0);//Making new room
-        room100.setItemInTheRoom(apple);//Putting the items in the room
-
         Room room010 = new Room("Room", 0, 1, 0);//Making new room
-
         Room room110 = new Room("Room", 1, 1, 0);//Making new room
-
         Room room020 = new Room("Room", 0, 2, 0);//Making new room
-
         Room room120 = new Room("Ending room ", 1, 2, 0, 3);//Making new end room
-
         Room room001 = new Room("room", 0, 0, 1);//Putting the items in the room
-
         Room room101 = new Room("room", 1, 0, 1);//Making new room
-
         Room room011 = new Room("room", 0, 1, 1);//Making new room
-
         Room room111 = new Room("room", 1, 1, 1);//Making new room
-
         Room room021 = new Room("room", 0, 2, 1);//Making new room
-        room021.setItemInTheRoom(key);
-
         Room room121 = new Room("room", 1, 2, 1);//Making new room
+        
+        room000.setItemInTheRoom(hat);//Putting the items in the room
+        room100.setItemInTheRoom(apple);//Putting the items in the room
+        room021.setItemInTheRoom(key);
         room121.setItemInTheRoom(kiwi);//Putting the items in the room
-
+        
         Map map = new Map("NZ",2,3,2);
         map.setRoom(0, 0, 0, room000);//setting the rooms that exist
         map.setRoom(1, 0, 0, room100);//setting the rooms that exist
@@ -116,8 +110,6 @@ public class TextAdventure
         map.setRoom(1, 1, 1, room111);//setting the rooms that exist
         map.setRoom(0, 2, 1, room021);//setting the rooms that exist
         map.setRoom(1, 2, 1, room121);//setting the rooms that exist
-
-        map.setPlayerInTheMap(player);
 
         room000.setValidRooms(0, room001);//Setting the valid rooms for each room
         room000.setValidRooms(1, room100);//Setting the valid rooms for each room
@@ -156,12 +148,16 @@ public class TextAdventure
         room121.setValidRooms(1, room120);
 
         map.showValues();//Showing values for just the first room once
-
-        String placeItem1 = "hat";//Item 1 is a hat
-        String placeItem2 = "apple";// Item 2 is a apple
-        String placeItem3 = "kiwi";//Item 3 is a kiwi
-
+        
+        return map;
+    }
+    
+    public void startAdventure(Map map, Player player){
+        map.setPlayerInTheMap(player);
+        
         boolean gameRunning = true;// The boolean for if the game is running
+        Scanner inputStream = new Scanner(System.in);
+        
         while(gameRunning){//while loop
             String command = inputStream.next().toLowerCase();// String to take in words
             if(command.equals(directionEast)){//Moving the player right if the player types east
