@@ -8,21 +8,25 @@
 public class Map
 {
     // instance variables - replace the example below with your own
-    int amountOfRoomsX = 2;//Ammount of rooms X
-    int amountOfRoomsY = 3;//Ammount of rooms Y
-    int amountOfLevels = 2;
+    String name = "unNamed";
+    int amountOfRoomsX = 0;//Ammount of rooms X
+    int amountOfRoomsY = 0;//Ammount of rooms Y
+    int amountOfLevels = 0;
     Player playerInTheMap;
-    Room board[][][] = new Room[amountOfRoomsX][amountOfRoomsY][amountOfLevels];//Board for the rooms
+    Room board[][][] = null; //Board for the rooms
     int playerX = 0;// The player's X
     int playerY = 0;// The player's Y
     int playerZ = 0;// The player's Z
     /**
      * Constructor for objects of class Map
      */
-    public Map()
+    public Map(String value, int roomsX, int roomsY, int levels)
     {
-        // initialise instance variables
-
+        name = value;
+        amountOfRoomsX = roomsX;
+        amountOfRoomsY = roomsY;
+        amountOfLevels = levels;
+        board = new Room[amountOfRoomsX][amountOfRoomsY][amountOfLevels];
     }
 
     public void movePlayerXYZ(int x, int y, int z){

@@ -13,17 +13,23 @@ public class Room
     int amountOfValidRooms = 2; //ammount of valid rooms
     Item itemsInTheRoomNeededToWin[] = null; //items in the rooms       
     Room validRooms[] = new Room[amountOfValidRooms]; // array form rooms
-
+    int roomX = 0;
+    int roomY = 0;
+    int roomZ = 0;
+    
     /**
      * Constructor for objects of class Room
      */
-    public Room(String value)
+    public Room(String value, int x, int y, int z)
     {
         name = value;
+        roomX = x;
+        roomY = y;
+        roomZ = z;
     }
 
-    public Room(String value, int itemsNeededToWin){
-        this(value);
+    public Room(String value, int x, int y, int z, int itemsNeededToWin){
+        this(value, x, y, z);
         amountOfItemsInTheRoomNeededToWin = itemsNeededToWin;
         itemsInTheRoomNeededToWin = new Item[amountOfItemsInTheRoomNeededToWin]; //items in the rooms
     }
@@ -77,6 +83,23 @@ public class Room
         return false;
     }
 
+    private String getDirectionOfValidRoom(Room validRoom){
+        if(roomX > validRoom.roomX){
+            return TextAdventure.directionWest;
+        }else if(roomX < validRoom.roomX){
+            return TextAdventure.directionEast;
+        }else if(roomY > validRoom.roomY){
+            return TextAdventure.directionNorth;
+        }else if(roomY < validRoom.roomY){
+            return TextAdventure.directionSouth;
+        }else if(roomZ > validRoom.roomZ){
+            return TextAdventure.directionDown;
+        }else if(roomZ < validRoom.roomZ){
+            return TextAdventure.directionUp;
+        }
+        return "Direction judging error";
+    }
+    
     public void showValues(){
         System.out.println("Room name: "+name);
 
@@ -93,10 +116,10 @@ public class Room
             }
         } 
 
-        System.out.println("  Valid Rooms: ");//The text for the words "Valid rooms"
+        System.out.println("  Valid Directions: ");//The text for the words "Valid rooms"
         for (int x=0;x<amountOfValidRooms;x++){ //prints valid rooms
             if (validRooms[x] != null) {
-                System.out.println("    "+validRooms[x].name);//prints the actual valid rooms
+                System.out.println("    "+getDirectionOfValidRoom(validRooms[x]));//prints the actual valid rooms
             }
         }
     }
