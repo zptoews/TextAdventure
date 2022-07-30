@@ -1,6 +1,6 @@
 Welcome to my text adventure game
 
-Your goal is escape the island
+Your goal is to escpe the island by putting three items in the end room
 
 The controls are North, South, East, West, Look, Pickup, and Place
 

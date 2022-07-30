@@ -7,12 +7,12 @@
  */
 public class Map
 {
-    // instance variables - replace the example below with your own
+    // instance variables
     String name = "unNamed";
     int amountOfRoomsX = 0;//Ammount of rooms X
     int amountOfRoomsY = 0;//Ammount of rooms Y
-    int amountOfLevels = 0;
-    Player playerInTheMap;
+    int amountOfLevels = 0;//Ammount of levels Z
+    Player playerInTheMap;//instance variable
     Room board[][][] = null; //Board for the rooms
     int playerX = 0;// The player's X
     int playerY = 0;// The player's Y
@@ -22,11 +22,11 @@ public class Map
      */
     public Map(String value, int roomsX, int roomsY, int levels)
     {
-        name = value;
-        amountOfRoomsX = roomsX;
-        amountOfRoomsY = roomsY;
-        amountOfLevels = levels;
-        board = new Room[amountOfRoomsX][amountOfRoomsY][amountOfLevels];
+        name = value;//changing the instance variable to be ajustable
+        amountOfRoomsX = roomsX;//changing the instance variable to be ajustable
+        amountOfRoomsY = roomsY;//changing the instance variable to be ajustable
+        amountOfLevels = levels;//changing the instance variable to be ajustable
+        board = new Room[amountOfRoomsX][amountOfRoomsY][amountOfLevels];//Board that makes up the map
     }
 
     public void movePlayerXYZ(int x, int y, int z){
@@ -35,18 +35,18 @@ public class Map
         if (validMove){
             playerX = x;//asigning playerX to x
             playerY = y;//asigning playerY to y
-            playerZ = z;
+            playerZ = z;//asigning playerZ to z
         }else{
             System.out.println("Sorry, not a valid move");// Telling the player it isnt a valid move
         }
     }
 
     public void setRoom(int x, int y, int z, Room value){
-        board[x][y][z] = value; 
+        board[x][y][z] = value;//changeable board values
     }
 
     public Room getCurrentRoomPlayerIsIn(){
-        return board[playerX][playerY][playerZ];
+        return board[playerX][playerY][playerZ];//returns where the player is on the map
     }
 
     public void setPlayerInTheMap(Player value){//player in the map function
@@ -57,13 +57,13 @@ public class Map
         getCurrentRoomPlayerIsIn().showValues();
     }
 
-    public void pickingUpItem(){
-        if(!getCurrentRoomPlayerIsIn().checkIfEndRoom()){
-            if(getCurrentRoomPlayerIsIn().itemInTheRoom == null){
+    public void pickingUpItem(){//If the player types pickup this executes
+        if(!getCurrentRoomPlayerIsIn().checkIfEndRoom()){//happens only if the player isnt in the end room
+            if(getCurrentRoomPlayerIsIn().itemInTheRoom == null){//if there is no item in the room
                 System.out.println("Sorry, there is no item in this room");       
-            }else if(playerInTheMap.itemInThePlayer != null){
+            }else if(playerInTheMap.itemInThePlayer != null){//if the player all ready has a item
                 System.out.println("Sorry, you already have a item");
-            }else{
+            }else{//The player actually picking up and storing the item in their inventory
                 playerInTheMap.setItemInThePlayer(getCurrentRoomPlayerIsIn().itemInTheRoom);
                 getCurrentRoomPlayerIsIn().itemInTheRoom = null;
                 System.out.println("You picked up a "+playerInTheMap.itemInThePlayer.name);
@@ -73,10 +73,10 @@ public class Map
         }
     }
 
-    public void placingItem(){
-        if(playerInTheMap.itemInThePlayer == null){
+    public void placingItem(){//If the player types place the executes
+        if(playerInTheMap.itemInThePlayer == null){//Happens if the player dosent have a item
             System.out.println("Sorry, you don't have a item");
-        }else if(!getCurrentRoomPlayerIsIn().checkIfEndRoom()){
+        }else if(!getCurrentRoomPlayerIsIn().checkIfEndRoom()){//happens only if the player isnt in the end room
             if(getCurrentRoomPlayerIsIn().itemInTheRoom != null){
                 System.out.println("Sorry, there is already a "+getCurrentRoomPlayerIsIn().itemInTheRoom.name+" in the room");
             }else{
@@ -84,12 +84,12 @@ public class Map
                 getCurrentRoomPlayerIsIn().itemInTheRoom = playerInTheMap.itemInThePlayer;
                 playerInTheMap.itemInThePlayer = null;
             }
-        }else{
+        }else{//if the player is in the end room
             for (int x=0;x<getCurrentRoomPlayerIsIn().amountOfItemsInTheRoomNeededToWin;x++){
-                if (getCurrentRoomPlayerIsIn().itemsInTheRoomNeededToWin[x] == null) {
-                    System.out.println("You placed a "+playerInTheMap.itemInThePlayer.name);         
-                    getCurrentRoomPlayerIsIn().itemsInTheRoomNeededToWin[x] = playerInTheMap.itemInThePlayer;
-                    playerInTheMap.itemInThePlayer = null;
+                if (getCurrentRoomPlayerIsIn().itemsInTheRoomNeededToWin[x] == null) {//if the player is in the end room and the max number of items isin in the end room the plaeyr place an item
+                    System.out.println("You placed a "+playerInTheMap.itemInThePlayer.name);//println teliing the player what item they placed      
+                    getCurrentRoomPlayerIsIn().itemsInTheRoomNeededToWin[x] = playerInTheMap.itemInThePlayer;//putting th item in the room
+                    playerInTheMap.itemInThePlayer = null;//takes the item out of the player
                     return;
                 }
             }
