@@ -97,12 +97,12 @@ public class Map
     }
 
     public void showValues(){
-        System.out.println("The player is located at: "+playerX+","+playerY+","+playerZ); //printing where the       
+        System.out.println("The player is located at: "+playerX+","+playerY+","+playerZ); //printing where the player is       
         for (int x=0;x<amountOfRoomsX;x++){
             for (int y=0;y<amountOfRoomsY;y++){
                 for(int z=0;z<amountOfLevels;z++)
                 if (board[x][y][z] != null) {
-                    board[x][y][z].showValues();
+                    board[x][y][z].showValues();//shows the room the player is in
                     System.out.println("");
                 }
             }

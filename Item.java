@@ -21,6 +21,6 @@ public class Item
     }
 
     public void showValues(){
-        System.out.println(name);
+        System.out.println(name);//items name
     }
 }

@@ -32,7 +32,7 @@ public class Player
         itemInThePlayer = value;
     }
     
-    public void showValues(){
+    public void showValues(){// shows the item the player has and the players name when inventory is typed
         System.out.println("Player name: "+name);
         if(itemInThePlayer !=  null){
             System.out.println("  Item name: "+itemInThePlayer.name);

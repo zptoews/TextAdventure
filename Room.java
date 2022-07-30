@@ -13,14 +13,14 @@ public class Room
     int amountOfValidRooms = 2; //ammount of valid rooms
     Item itemsInTheRoomNeededToWin[] = null; //items in the rooms       
     Room validRooms[] = new Room[amountOfValidRooms]; // array form rooms
-    int roomX = 0;
-    int roomY = 0;
-    int roomZ = 0;
+    int roomX = 0;//instance variable for roomX
+    int roomY = 0;//instance variable for roomY
+    int roomZ = 0;//instance variable for roomZ
     
     /**
      * Constructor for objects of class Room
      */
-    public Room(String value, int x, int y, int z)
+    public Room(String value, int x, int y, int z)//making the instance variable changeable so the game is more engine like
     {
         name = value;
         roomX = x;
@@ -28,21 +28,21 @@ public class Room
         roomZ = z;
     }
 
-    public Room(String value, int x, int y, int z, int itemsNeededToWin){
+    public Room(String value, int x, int y, int z, int itemsNeededToWin){//Allows the room location and items needed to win to be declared in the textadventure class
         this(value, x, y, z);
         amountOfItemsInTheRoomNeededToWin = itemsNeededToWin;
         itemsInTheRoomNeededToWin = new Item[amountOfItemsInTheRoomNeededToWin]; //items in the rooms
     }
 
     public void setName(String value){
-        name = value;
+        name = value;//set name for the rooms
     }
 
     public void setItemInTheRoom(Item value){//item in the room function
         itemInTheRoom = value; 
     }
 
-    public boolean checkIfItemsAreInRoomNeededToWin(){
+    public boolean checkIfItemsAreInRoomNeededToWin(){//methood to check if items in the room needed to win
         for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
             if (itemsInTheRoomNeededToWin[x] != null) {
                 return true;
@@ -51,8 +51,8 @@ public class Room
         return false;
     }
 
-    public boolean checkIfPlayerWon(){
-        if (checkIfEndRoom()){
+    public boolean checkIfPlayerWon(){//methood to check if the player won
+        if (checkIfEndRoom()){//if the end room the the player can win if all the items are in the end room
             for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ 
                 if (itemsInTheRoomNeededToWin[x] == null) {
                     return false;
@@ -63,7 +63,7 @@ public class Room
         return false;
     }
 
-    public void setValidRooms(int x, Room valid){//if the room is valid
+    public void setValidRooms(int x, Room valid){//if the room is valid//setting valid rooms which are set in text adventure
         validRooms[x] = valid;
     }
 
@@ -76,14 +76,14 @@ public class Room
         return false;
     }
 
-    public boolean checkIfEndRoom(){
+    public boolean checkIfEndRoom(){//methood for checking if the room is the end room by seeing if there are item need to win set to that room
         if(itemsInTheRoomNeededToWin != null){
             return true;
         }
         return false;
     }
 
-    private String getDirectionOfValidRoom(Room validRoom){
+    private String getDirectionOfValidRoom(Room validRoom){//shows the player the valid directions for the room they are in if the type look
         if(roomX > validRoom.roomX){
             return TextAdventure.directionWest;
         }else if(roomX < validRoom.roomX){
@@ -100,14 +100,14 @@ public class Room
         return "Direction judging error";
     }
     
-    public void showValues(){
+    public void showValues(){//methhod used for the look command
         System.out.println("Room name: "+name);
 
-        if(itemInTheRoom != null){
+        if(itemInTheRoom != null){//if there is a item in the room this is printed
             System.out.println("  The item in the room is: " + itemInTheRoom.name);
         }
 
-        if(checkIfEndRoom()){
+        if(checkIfEndRoom()){//if the room is the end room this is printed
             System.out.println("  Items needed to be in the room to win: "+amountOfItemsInTheRoomNeededToWin);//The text for the words "Items"
             for (int x=0;x<amountOfItemsInTheRoomNeededToWin;x++){ //prints item names
                 if (itemsInTheRoomNeededToWin[x] != null) {
