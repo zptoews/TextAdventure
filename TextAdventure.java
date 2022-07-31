@@ -1,4 +1,3 @@
-
 /**
  * Write a description of class textAdventure here.
  *
@@ -33,9 +32,14 @@ public class TextAdventure
     /**
      * Constructor for objects of class textAdventure
      */
-    public TextAdventure()
-    {
-        // initialise instance variables
+    public TextAdventure(){
+        printInstructions();//runs the print the start file methood
+        Player player = getPlayer();//gets the players name
+        Map map = adventureChoice();//prompos the adventure choice
+        startAdventure(map, player);//Starts the players function after the map is loaded
+    }
+
+    public void printInstructions(){
         File myFile=new File("GameStart.txt");//For printing the inital text
         try { //printing out the file
             Scanner readTheFile = new Scanner(myFile);//Scanner
@@ -47,19 +51,23 @@ public class TextAdventure
             e.printStackTrace();//incase something goes wrong
             System.out.println("Something went wrong 🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿🗿?");//incase something goes wrong
         }//catch statment
-
-        adventureChoice();//prompos the adventure choice
     }
-
-    public void adventureChoice(){
-        Scanner inputStream = new Scanner(System.in);//Scanner for movement, look command, pickup, place, and invintory
+    
+    public Player getPlayer(){
+        Scanner inputStream = new Scanner(System.in);//Scanner for detecting player name
         
         String playerName = inputStream.next();//For entering the player name
         Player player = new Player(playerName);//For entering the player name
         System.out.println("");
         player.showValues();//For printing the players name
         
-        System.out.println("Type what adventures you want: Nz or Canada");//System out print for asking for adventure
+        return player;
+    }
+    
+    public Map adventureChoice(){
+        Scanner inputStream = new Scanner(System.in);//Scanner for detecting adventure choice
+        
+        System.out.println("Type what adventure you want: NZ or Canada");//System out print for asking for adventure
         
         String adventureChoice = inputStream.next().toLowerCase();//Making the choice and making it lower case
         Map map;//Map variable
@@ -73,7 +81,8 @@ public class TextAdventure
                 System.out.println("What you typed is invalid so the NZ adventure has been chosen");
                 map = getAdventureNzMap();//defualt if somthing invalid is typed
         }
-        startAdventure(map, player);//Starts the players function after the map is loaded
+        
+        return map;
     }
     
     public Map getAdventureNzMap(){
@@ -150,8 +159,6 @@ public class TextAdventure
 
         room121.setValidRooms(0, room111);//Setting the valid rooms for each room
         room121.setValidRooms(1, room120);//Setting the valid rooms for each room
-
-        map.showValues();//Showing values for just the rooms once
         
         return map;//Return sttment becasue the methood isnt void
     }
@@ -202,7 +209,6 @@ public class TextAdventure
                 System.out.println("congratulations, you won");//Print the word "End"
                 gameRunning = false;//Stops the game
             }
-            //map.showValues();
         }
     }
 }
