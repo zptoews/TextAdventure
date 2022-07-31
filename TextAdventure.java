@@ -54,9 +54,9 @@ public class TextAdventure
     }
     
     public Player getPlayer(){
-        Scanner inputStream = new Scanner(System.in);//Scanner for detecting player name
+        Scanner scanner = new Scanner(System.in);//Scanner for detecting player name
         
-        String playerName = inputStream.next();//For entering the player name
+        String playerName = scanner.nextLine();//For entering the player name
         Player player = new Player(playerName);//For entering the player name
         System.out.println("");
         player.showValues();//For printing the players name
@@ -65,22 +65,22 @@ public class TextAdventure
     }
     
     public Map adventureChoice(){
-        Scanner inputStream = new Scanner(System.in);//Scanner for detecting adventure choice
+        Scanner scanner = new Scanner(System.in);//Scanner for detecting adventure choice
         
         System.out.println("Type what adventure you want: NZ or Canada");//System out print for asking for adventure
         
-        String adventureChoice = inputStream.next().toLowerCase();//Making the choice and making it lower case
+        String adventureChoice = scanner.nextLine().toLowerCase();//Making the choice and making it lower case
         Map map;//Map variable
         
         switch (adventureChoice) {//Switch statment for which adventure
             case NZ://NZ case
                 System.out.println("You have chosen the NZ adventure");
-                map = getAdventureNzMap(); //chooses the map
+                map = getAdventureNzMap(); //chooses the nz map
                 break;
             
             case Canada:
                 System.out.println("You have chosen the Canada adventure");
-                map = getAdventureCanadaMap();
+                map = getAdventureCanadaMap();//chooses the canada map
                 break;
                 
             default:
@@ -251,10 +251,11 @@ public class TextAdventure
         map.setPlayerInTheMap(player);//Player put in the map
         
         boolean gameRunning = true;// The boolean for if the game is running
-        Scanner inputStream = new Scanner(System.in);//Allows imput
+        
+        Scanner scanner = new Scanner(System.in);//Allows imput
         
         while(gameRunning){//while loop
-            String command = inputStream.next().toLowerCase();// String to take in words
+            String command = scanner.nextLine().toLowerCase();// String to take in words
             if(command.equals(directionEast)){//Moving the player east if the player types east
                 map.movePlayerXYZ(map.playerX+1, map.playerY, map.playerZ);
             }    
@@ -287,10 +288,12 @@ public class TextAdventure
             }
             else{//in case the player typed somthing wrong or a invalid command
                 System.out.println("Sorry what you typed is invalid");
+                System.out.println("The valid commands are: North, South, East, West, Up, Down, Look, Inventory, Pickup, and Place");
             }
 
             if(map.getCurrentRoomPlayerIsIn().checkIfPlayerWon()){//Ends the game if the palyer gets to the end room
-                System.out.println("congratulations, you won");//Print the word "End"
+                System.out.println("Congratulations, you won!");//Print the word "End"
+                System.out.println("♪┏(・o･)┛♪");
                 gameRunning = false;//Stops the game
             }
         }

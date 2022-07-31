@@ -37,7 +37,7 @@ public class Map
             playerY = y;//asigning playerY to y
             playerZ = z;//asigning playerZ to z
         }else{
-            System.out.println("Sorry, not a valid move");// Telling the player it isnt a valid move
+            System.out.println("Sorry, not a valid direction");// Telling the player it isnt a valid move
         }
     }
 

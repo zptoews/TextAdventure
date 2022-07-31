@@ -1,7 +1,7 @@
 Welcome to my text adventure game
 
-Your goal is to escpe the island by putting three items in the end room
+Your goal is to place three items in the end room
 
-The controls are North, South, East, West, Look, Pickup, and Place
+The commands are North, South, East, West, Up, Down, Look, Inventory, Pickup, and Place
 
 Type your name
