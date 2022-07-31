@@ -74,9 +74,15 @@ public class TextAdventure
         
         switch (adventureChoice) {//Switch statment for which adventure
             case NZ://NZ case
-                System.out.println("You have choosen the NZ adventure");
+                System.out.println("You have chosen the NZ adventure");
                 map = getAdventureNzMap(); //chooses the map
                 break;
+            
+            case Canada:
+                System.out.println("You have chosen the Canada adventure");
+                map = getAdventureCanadaMap();
+                break;
+                
             default:
                 System.out.println("What you typed is invalid so the NZ adventure has been chosen");
                 map = getAdventureNzMap();//defualt if somthing invalid is typed
@@ -86,10 +92,10 @@ public class TextAdventure
     }
     
     public Map getAdventureNzMap(){
-        Item hat = new Item("L&P");//Creating items
-        Item apple = new Item("wool");//Creating items
+        Item LandP = new Item("L&P");//Creating items
+        Item wool = new Item("wool");//Creating items
         Item kiwi = new Item("kiwi");//Creating items
-        Item key = new Item("rugby ball");//Creating items
+        Item RugbyBall = new Item("rugby ball");//Creating items
 
         Room room000 = new Room("Starting room", 0, 0, 0);//Putting the items in the room        
         Room room100 = new Room("Room", 1, 0, 0);//Making new room
@@ -104,10 +110,10 @@ public class TextAdventure
         Room room021 = new Room("room", 0, 2, 1);//Making new room
         Room room121 = new Room("room", 1, 2, 1);//Making new room
         
-        room000.setItemInTheRoom(hat);//Putting the items in the room
-        room100.setItemInTheRoom(apple);//Putting the items in the room
-        room021.setItemInTheRoom(key);//Putting the items in the room
-        room121.setItemInTheRoom(kiwi);//Putting the items in the room
+        room000.setItemInTheRoom(LandP);//Putting the items in the room
+        room100.setItemInTheRoom(wool);//Putting the items in the room
+        room021.setItemInTheRoom(kiwi);//Putting the items in the room
+        room121.setItemInTheRoom(RugbyBall);//Putting the items in the room
         
         Map map = new Map("NZ",2,3,2);
         map.setRoom(0, 0, 0, room000);//setting the rooms that exist
@@ -158,6 +164,84 @@ public class TextAdventure
         room111.setValidRooms(1, room121);//Setting the valid rooms for each room
 
         room121.setValidRooms(0, room111);//Setting the valid rooms for each room
+        room121.setValidRooms(1, room120);//Setting the valid rooms for each room
+        
+        return map;//Return sttment becasue the methood isnt void
+    }
+    
+    public Map getAdventureCanadaMap(){
+        Item Moose = new Item("Moose");//Creating items
+        Item MapleLeaf = new Item("Maple leaf");//Creating items
+        Item MapleSyurp = new Item("Maple syurp");//Creating items
+        Item HockeyPuck = new Item("Hockey puck");//Creating items
+
+        Room room000 = new Room("Starting room", 0, 0, 0);//Putting the items in the room        
+        Room room100 = new Room("Room", 1, 0, 0);//Making new room
+        Room room010 = new Room("Room", 0, 1, 0);//Making new room
+        Room room110 = new Room("Room", 1, 1, 0);//Making new room
+        Room room020 = new Room("Room", 0, 2, 0);//Making new room
+        Room room120 = new Room("Room", 1, 2, 0);//Making new end room
+        Room room001 = new Room("Room", 0, 0, 1);//Putting the items in the room
+        Room room101 = new Room("Room", 1, 0, 1);//Making new room
+        Room room011 = new Room("Room", 0, 1, 1);//Making new room
+        Room room111 = new Room("Room", 1, 1, 1);//Making new room
+        Room room021 = new Room("Room", 0, 2, 1);//Making new room
+        Room room121 = new Room("Ending room", 1, 2, 1, 3);//Making new room
+        
+        room000.setItemInTheRoom(Moose);//Putting the items in the room
+        room111.setItemInTheRoom(MapleLeaf);//Putting the items in the room
+        room110.setItemInTheRoom(MapleSyurp);//Putting the items in the room
+        room120.setItemInTheRoom(HockeyPuck);//Putting the items in the room
+        
+        Map map = new Map("NZ",2,3,2);
+        map.setRoom(0, 0, 0, room000);//setting the rooms that exist
+        map.setRoom(1, 0, 0, room100);//setting the rooms that exist
+        map.setRoom(0, 1, 0, room010);//setting the rooms that exist
+        map.setRoom(1, 1, 0, room110);//setting the rooms that exist
+        map.setRoom(0, 2, 0, room020);//setting the rooms that exist
+        map.setRoom(1, 2, 0, room120);//setting the rooms that exist
+
+        map.setRoom(0, 0, 1, room001);//setting the rooms that exist
+        map.setRoom(1, 0, 1, room101);//setting the rooms that exist
+        map.setRoom(0, 1, 1, room011);//setting the rooms that exist
+        map.setRoom(1, 1, 1, room111);//setting the rooms that exist
+        map.setRoom(0, 2, 1, room021);//setting the rooms that exist
+        map.setRoom(1, 2, 1, room121);//setting the rooms that exist
+
+        room000.setValidRooms(0, room010);//Setting the valid rooms for each room
+        room000.setValidRooms(1, room100);//Setting the valid rooms for each room
+
+        room100.setValidRooms(0, room000);//Setting the valid rooms for each room
+        room100.setValidRooms(1, room110);//Setting the valid rooms for each room
+
+        room010.setValidRooms(0, room000);//Setting the valid rooms for each room
+        room010.setValidRooms(1, room020);//Setting the valid rooms for each room
+
+        room020.setValidRooms(0, room010);//Setting the valid rooms for each room
+        room020.setValidRooms(1, room021);//Setting the valid rooms for each room
+
+        room110.setValidRooms(0, room100);//Setting the valid rooms for each room
+        room110.setValidRooms(1, room111);//Setting the valid rooms for each room
+
+        room120.setValidRooms(0, room121);//Setting the valid rooms for each room
+        room120.setValidRooms(1, room110);//Setting the valid rooms for each room
+
+        room001.setValidRooms(0, room011);//Setting the valid rooms for each room
+        room001.setValidRooms(1, room101);//Setting the valid rooms for each room
+
+        room101.setValidRooms(0, room001);//Setting the valid rooms for each room
+        room101.setValidRooms(1, room111);//Setting the valid rooms for each room
+
+        room011.setValidRooms(0, room001);//Setting the valid rooms for each room
+        room011.setValidRooms(1, room111);//Setting the valid rooms for each room
+
+        room021.setValidRooms(0, room020);//Setting the valid rooms for each room
+        room021.setValidRooms(1, room121);//Setting the valid rooms for each room
+
+        room111.setValidRooms(0, room101);//Setting the valid rooms for each room
+        room111.setValidRooms(1, room110);//Setting the valid rooms for each room
+
+        room121.setValidRooms(0, room021);//Setting the valid rooms for each room
         room121.setValidRooms(1, room120);//Setting the valid rooms for each room
         
         return map;//Return sttment becasue the methood isnt void
