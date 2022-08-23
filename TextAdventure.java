@@ -67,7 +67,7 @@ public class TextAdventure
     public Map adventureChoice(){
         Scanner scanner = new Scanner(System.in);//Scanner for detecting adventure choice
         
-        System.out.println("Type what adventure you want: NZ or Canada");//System out print for asking for adventure
+        System.out.println("Type what adventure you want: NZ, Canada, Jacob");//System out print for asking for adventure
         
         String adventureChoice = scanner.nextLine().toLowerCase();//Making the choice and making it lower case
         Map map;//Map variable
